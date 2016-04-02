@@ -1,0 +1,22 @@
+sidekiq:
+  build: docker/sidekiq
+  command: bundle exec foreman s
+  ports:
+   - "3000:3000"
+  volumes:
+   - .:/opt/pikabu_crawler
+  links:
+   - redis
+   - elastic
+redis:
+  image: redis:3.0
+  command: redis-server --appendonly yes
+  volumes:
+    - ./data/redis:/data
+elastic:
+  build: docker/elastic
+  command: elasticsearch -Des.network.host=0.0.0.0
+  ports:
+    - "9200:9200"
+  volumes:
+    - ./data/elastic:/usr/share/elasticsearch/data
