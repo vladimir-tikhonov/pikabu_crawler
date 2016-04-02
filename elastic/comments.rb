@@ -13,6 +13,20 @@ module Elastic
       client.bulk(body: request_body)
     end
 
+    def last_indexed_post_id
+      response = client.search(
+        index: index_name,
+        type: mapping_name,
+        body: {
+          aggregations: {
+            max_post_id: { max: { field: :post_id } }
+          },
+          size: 0
+        }
+      )
+      response['aggregations']['max_post_id']['value'].to_i
+    end
+
     private def build_index_hash(comment)
       {
         _index: index_name,

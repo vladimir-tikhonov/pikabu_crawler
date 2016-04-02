@@ -1,9 +1,4 @@
 require 'sidekiq'
 
-class FetchNewCommentsWorker
-  include Sidekiq::Worker
-
-  def perform
-    fail NotImplementedError
-  end
-end
+require_relative 'workers/fetch_new_comments_worker'
+require_relative 'workers/process_post_worker'
