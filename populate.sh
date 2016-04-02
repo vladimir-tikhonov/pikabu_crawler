@@ -24,13 +24,13 @@ curl -XPUT 'http://localhost:9200/pikabu' -d '{
 
 curl -XPUT 'http://localhost:9200/pikabu/comment/_mapping' -d '{
   "comment": {
-    "_all" : { "analyzer": "full_analyzer" },
+    "_all" : { "enabled": "false" },
     "properties" : {
-      "rating": { "type": "long", "include_in_all": "false" },
-      "author" : { "type": "string", "include_in_all": "false" },
+      "rating": { "type": "long" },
+      "author" : { "type": "string" },
       "content" : { "type": "string", "analyzer": "full_analyzer" },
-      "post_id" : { "type": "long", "include_in_all": "false" },
-      "date" : { "type": "string", "include_in_all": "false" }
+      "post_id" : { "type": "long" },
+      "date" : { "type": "date" }
     }
   }
 }' && echo

@@ -1,3 +1,5 @@
+require 'time'
+
 require_relative 'base'
 
 module Elastic
@@ -12,7 +14,7 @@ module Elastic
           author: comment.author,
           content: comment.content,
           post_id: comment.post_id,
-          date: comment.date
+          date: comment.date.iso8601
         }
       )
     end
