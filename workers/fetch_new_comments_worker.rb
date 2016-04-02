@@ -7,9 +7,9 @@ module Workers
   class FetchNewCommentsWorker < Base
     include Sidetiq::Schedulable
 
-    recurrence { hourly.minute_of_hour(0, 15, 30, 45) }
+    recurrence { hourly.minute_of_hour(0, 10, 20, 30, 40, 50) }
 
-    FETCH_LIMIT = 500
+    FETCH_LIMIT = 100
 
     def perform
       first_post_id = elastic_comments.last_indexed_post_id + 1
