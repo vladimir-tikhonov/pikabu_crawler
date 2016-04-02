@@ -24,7 +24,7 @@ module PikabuAPI
       return unless content_root
       comment_content = Nokogiri::HTML(content_root.content)
                         .xpath('//text()').map(&:text).join(' ')
-                        .strip.gsub(/\s+/, ' ')
+                        .gsub(/[[:space:]]+/, ' ').strip
 
       comment_hash = {
         id: comment_attributes['id'].to_i,
