@@ -9,7 +9,5 @@ elastic_comments = Elastic::Comments.new
 1.upto(10_000) do |index|
   puts "Processing ##{index}"
   comments = comments_api.fetch_comments(index)
-  comments.each do |comment|
-    elastic_comments.save_comment(comment)
-  end
+  elastic_comments.save_comments_bulk(comments)
 end

@@ -27,7 +27,7 @@ curl -XPUT 'http://localhost:9200/pikabu/comment/_mapping' -d '{
     "_all" : { "enabled": "false" },
     "properties" : {
       "rating": { "type": "long" },
-      "author" : { "type": "string" },
+      "author" : { "type": "string", "index": "not_analyzed" },
       "content" : { "type": "string", "analyzer": "full_analyzer" },
       "post_id" : { "type": "long" },
       "date" : { "type": "date" }
