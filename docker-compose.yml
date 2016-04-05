@@ -11,6 +11,8 @@ sidekiq:
 redis:
   image: redis:3.0
   command: redis-server --appendonly yes
+  ports:
+   - "6379:6379"
   volumes:
     - ./data/redis:/data
 elastic:

@@ -7,7 +7,7 @@ module Workers
   class FetchNewCommentsWorker < Base
     include Sidetiq::Schedulable
 
-    recurrence { hourly.minute_of_hour(0, 10, 20, 30, 40, 50) }
+    # recurrence { hourly.minute_of_hour(0, 10, 20, 30, 40, 50) }
 
     FETCH_LIMIT = 100
 
