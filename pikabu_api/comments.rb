@@ -22,8 +22,9 @@ module PikabuAPI
       comment_attributes = comment_xml.to_h
       content_root = comment_xml.child
       return unless content_root
-      comment_content = Nokogiri::HTML(content_root.content)
-                        .xpath('//text()').map(&:text).join(' ')
+      comment_html = Nokogiri::HTML(content_root.content)
+      comment_html.search('.//blockquote').remove
+      comment_content = comment_html.xpath('//text()').map(&:text).join(' ')
                         .gsub(/[[:space:]]+/, ' ').strip
 
       comment_hash = {
