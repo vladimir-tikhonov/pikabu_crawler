@@ -1,14 +1,9 @@
-require 'sidetiq'
 
 require_relative 'base'
 require_relative 'process_post_worker'
 
 module Workers
   class FetchNewCommentsWorker < Base
-    include Sidetiq::Schedulable
-
-    # recurrence { hourly.minute_of_hour(0, 10, 20, 30, 40, 50) }
-
     FETCH_LIMIT = 100
 
     def perform

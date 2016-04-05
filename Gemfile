@@ -9,7 +9,6 @@ gem 'elasticsearch', '~> 1.0'
 gem 'sidekiq', '~> 4.1'
 gem 'rack', '~> 1.6'
 gem 'sinatra', '~> 1.4'
-gem 'sidetiq', '~> 0.7'
 gem 'foreman', '~> 0.78'
 
 gem 'pry-byebug'
