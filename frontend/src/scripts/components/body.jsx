@@ -7,7 +7,8 @@ const {
     LayoutBody,
     LayoutResults,
     SideBar,
-    DynamicRangeFilter
+    DynamicRangeFilter,
+    InputFilter
 } = require('searchkit');
 
 const TopBar = require('./body/top_bar.jsx');
@@ -18,30 +19,33 @@ const noHitsTranslations = {
 };
 
 const rangeInputTranslations = {
-  'range.submit': 'Применить'
+    'range.submit': 'Применить'
 };
 
 const paginationTranslations = {
-  "pagination.previous": "Назад",
-  "pagination.next": "Вперёд"
+    "pagination.previous": "Назад",
+    "pagination.next": "Вперёд"
 };
 
 const Body = () => {
     return (
         <LayoutBody>
             <SideBar>
-              <DynamicRangeFilter
-                translations={rangeInputTranslations}
-                field="rating"
-                id="rating"
-                title="Рейтинг комментария"/>
+                <InputFilter
+                    id="author"
+                    title="Фильтр по автору"
+                    placeholder="ник на сайте"
+                    searchOnChange={true}
+                    queryFields={["author"]} />
+                <DynamicRangeFilter
+                    translations={rangeInputTranslations}
+                    field="rating"
+                    id="rating"
+                    title="Фильтр по рейтингу" />
             </SideBar>
             <LayoutResults>
-                <TopBar />
-                <Hits
-                    hitsPerPage={30}
-                    itemComponent={CommentItem}
-                    scrollTo="body" />
+                <TopBar/>
+                <Hits hitsPerPage={30} itemComponent={CommentItem} scrollTo="body"/>
                 <NoHits translations={noHitsTranslations}/>
                 <InitialLoader/>
                 <Pagination showNumbers={true} translations={paginationTranslations}/>
