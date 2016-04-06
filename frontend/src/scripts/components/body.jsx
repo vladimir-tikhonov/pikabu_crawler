@@ -6,7 +6,8 @@ const {
     Hits,
     LayoutBody,
     LayoutResults,
-    SideBar
+    SideBar,
+    DynamicRangeFilter
 } = require('searchkit');
 
 const TopBar = require('./body/top_bar.jsx');
@@ -16,10 +17,20 @@ const noHitsTranslations = {
     "NoHits.NoResultsFound": 'По запросу "{query}" ничего не найдено :('
 };
 
+const rangeInputTranslations = {
+  'range.submit': 'Применить'
+}
+
 const Body = () => {
     return (
         <LayoutBody>
-            <SideBar/>
+            <SideBar>
+              <DynamicRangeFilter
+                translations={rangeInputTranslations}
+                field="rating"
+                id="rating"
+                title="Рейтинг комментария"/>
+            </SideBar>
             <LayoutResults>
                 <TopBar />
                 <Hits

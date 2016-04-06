@@ -15,7 +15,8 @@ const Header = () => {
                     translations={translations}
                     autofocus={true}
                     searchOnChange={true}
-                    queryFields={['content']}/>
+                    queryFields={['content']}
+                    searchThrottleTime={500} />
         </TopBar>
     );
 };
