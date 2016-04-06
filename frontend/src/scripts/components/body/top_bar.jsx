@@ -52,13 +52,22 @@ const resetAllTranslations = {
     "reset.clear_all": "Сбросить параметры поиска"
 }
 
+const customHitStats = (props) => {
+    const { bemBlocks, hitsCount, timeTaken } = props;
+    return (
+        <div className={bemBlocks.container()} data-qa="hits-stats">
+            <div className={bemBlocks.container("info")} data-qa="info">
+                Найдено {hitsCount} записей за {timeTaken}мс.
+            </div>
+      </div>
+    )
+};
+
 const TopBar = () => {
     return (
         <ActionBar>
             <ActionBarRow>
-                <HitsStats translations={{
-                    "hitstats.results_found": "найдено: {hitCount}"
-                }}/>
+                <HitsStats component={customHitStats}/>
                 <SortingSelector options={sortOptions}/>
             </ActionBarRow>
             <ActionBarRow>
