@@ -1,1 +1,1 @@
-webpack: ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --inline --hot
+webpack: ES_HOST=http://164.132.110.157:9200 ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --inline --hot

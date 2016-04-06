@@ -6,13 +6,12 @@ const Body = require('./components/body.jsx');
 
 require('searchkit/theming/theme.scss');
 
-const host = "http://164.132.110.157:9200"
-const sk = new SearchkitManager(host, {});
+const searchkitManager = new SearchkitManager(process.env.ES_HOST, {});
 
 class App extends React.Component {
     render() {
         return (
-            <SearchkitProvider searchkit={sk}>
+            <SearchkitProvider searchkit={searchkitManager}>
                 <Layout size="l">
                     <Header />
                     <Body />
