@@ -1,13 +1,23 @@
 const React = require('react');
+const moment = require('moment');
+
+require('../../../styles/components/body/comment_item.scss');
 
 const CommentItem = (props) => {
     const result = props.result;
-    const { author, content } = result._source;
-    const wrapperClass = props.bemBlocks.item().mix(props.bemBlocks.container("comment-item"));
+    const comment_id = result._id;
+    const { author, content, rating, date, post_id } = result._source;
+    const formattedDate = moment(date).locale('ru').fromNow();
 
     return (
-        <div className={wrapperClass} key={result._id}>
-          <span>{content} by {author}</span>
+        <div className="comment-item" key={result._id}>
+            <div className="info">
+                <span className="rating">{rating}</span>
+                <a className="author-link" href={'http://pikabu.ru/profile/' + author}>{author}</a>
+                <span className="date">отправлено {formattedDate}</span>
+                <a className="comment-link" href={'http://pikabu.ru/story/' + '_' + post_id + '#comment_' + comment_id}>#</a>
+            </div>
+            <div className="content"><span>{content.split("\\\"").join("\"")}</span></div>
         </div>
     );
 };

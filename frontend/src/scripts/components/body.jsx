@@ -19,7 +19,12 @@ const noHitsTranslations = {
 
 const rangeInputTranslations = {
   'range.submit': 'Применить'
-}
+};
+
+const paginationTranslations = {
+  "pagination.previous": "Назад",
+  "pagination.next": "Вперёд"
+};
 
 const Body = () => {
     return (
@@ -35,12 +40,11 @@ const Body = () => {
                 <TopBar />
                 <Hits
                     hitsPerPage={30}
-                    highlightFields={['content']}
                     itemComponent={CommentItem}
                     scrollTo="body" />
                 <NoHits translations={noHitsTranslations}/>
                 <InitialLoader/>
-                <Pagination showNumbers={true}/>
+                <Pagination showNumbers={true} translations={paginationTranslations}/>
             </LayoutResults>
         </LayoutBody>
     );

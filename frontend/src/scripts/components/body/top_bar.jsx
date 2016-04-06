@@ -5,7 +5,6 @@ const {
     ResetFilters,
     SelectedFilters,
     SortingSelector,
-    ViewSwitcherToggle,
     ActionBar,
     ActionBarRow
 } = require('searchkit');
@@ -49,6 +48,10 @@ const sortOptions = [
     }
 ];
 
+const resetAllTranslations = {
+    "reset.clear_all": "Сбросить параметры поиска"
+}
+
 const TopBar = () => {
     return (
         <ActionBar>
@@ -56,12 +59,11 @@ const TopBar = () => {
                 <HitsStats translations={{
                     "hitstats.results_found": "найдено: {hitCount}"
                 }}/>
-                <ViewSwitcherToggle/>
                 <SortingSelector options={sortOptions}/>
             </ActionBarRow>
             <ActionBarRow>
                 <SelectedFilters/>
-                <ResetFilters/>
+                <ResetFilters translations={resetAllTranslations} />
             </ActionBarRow>
 
         </ActionBar>
