@@ -37,11 +37,6 @@ const Body = () => {
                     placeholder="ник на сайте"
                     searchOnChange={true}
                     queryFields={["author"]} />
-                <DynamicRangeFilter
-                    translations={rangeInputTranslations}
-                    field="rating"
-                    id="rating"
-                    title="Фильтр по рейтингу" />
             </SideBar>
             <LayoutResults>
                 <TopBar/>
