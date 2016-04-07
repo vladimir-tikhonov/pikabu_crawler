@@ -13,9 +13,15 @@ const CommentItem = (props) => {
         <div className="comment-item" key={result._id}>
             <div className="info">
                 <span className="rating">{rating}</span>
-                <a className="author-link" href={'http://pikabu.ru/profile/' + author}>{author}</a>
+                <a
+                  className="author-link"
+                  target="_blank"
+                  href={'http://pikabu.ru/profile/' + author}>{author}</a>
                 <span className="date">отправлено {formattedDate}</span>
-                <a className="comment-link" href={'http://pikabu.ru/story/' + '_' + post_id + '#comment_' + comment_id}>#</a>
+                <a
+                  className="comment-link"
+                  target="_blank"
+                  href={'http://pikabu.ru/story/' + '_' + post_id + '#comment_' + comment_id}>#</a>
             </div>
             <div className="content"><span>{content.split("\\\"").join("\"")}</span></div>
         </div>
