@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 
 const ES_HOST = process.env.ES_HOST;
+const MIXPANEL_TOKEN = process.env.MIXPANEL_TOKEN;
 
 module.exports = {
     entry: './src/main.jsx',
@@ -40,7 +41,8 @@ module.exports = {
     plugins: [
         new webpack.DefinePlugin({
             'process.env': {
-                'ES_HOST': JSON.stringify(ES_HOST)
+                'ES_HOST': JSON.stringify(ES_HOST),
+                'MIXPANEL_TOKEN': JSON.stringify(MIXPANEL_TOKEN)
             }
         }),
         new HtmlWebpackPlugin({

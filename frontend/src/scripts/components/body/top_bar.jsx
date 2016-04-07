@@ -74,7 +74,6 @@ const TopBar = () => {
                 <SelectedFilters/>
                 <ResetFilters translations={resetAllTranslations} />
             </ActionBarRow>
-
         </ActionBar>
     );
 };

@@ -7,7 +7,6 @@ const {
     LayoutBody,
     LayoutResults,
     SideBar,
-    DynamicRangeFilter,
     InputFilter
 } = require('searchkit');
 
@@ -16,10 +15,6 @@ const CommentItem = require('./body/comment_item.jsx');
 
 const noHitsTranslations = {
     "NoHits.NoResultsFound": 'По запросу "{query}" ничего не найдено :('
-};
-
-const rangeInputTranslations = {
-    'range.submit': 'Применить'
 };
 
 const paginationTranslations = {
@@ -35,7 +30,7 @@ const Body = () => {
                     id="author"
                     title="Фильтр по автору"
                     placeholder="ник на сайте"
-                    searchOnChange={true}
+                    searchOnChange={false}
                     queryFields={["author"]} />
             </SideBar>
             <LayoutResults>

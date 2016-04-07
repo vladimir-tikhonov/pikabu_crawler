@@ -1,1 +1,1 @@
-webpack: ES_HOST=http://164.132.110.157:9200/pikabu/comment ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --inline --hot
+webpack: ES_HOST=http://164.132.110.157:9200/pikabu/comment MIXPANEL_TOKEN=41bf3fd8b84f7af135455c00ffae9f43 ./node_modules/webpack-dev-server/bin/webpack-dev-server.js --config webpack.config.js --inline --hot
