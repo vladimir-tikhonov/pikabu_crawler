@@ -1,0 +1,7 @@
+index.similarity.default.type: BM25
+
+bootstrap.mlockall: true
+
+action.disable_close_all_indices: true
+action.disable_delete_all_indices: true
+action.disable_shutdown: true
