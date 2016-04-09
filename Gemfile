@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 ruby '2.3.0'
 
-gem 'rest-client', '~> 1.8'
+gem 'rest-client', '~> 2.0.0.rc2'
 gem 'nokogiri', '~> 1.6'
 gem 'nori', '~> 2.6'
 gem 'elasticsearch', '~> 1.0'

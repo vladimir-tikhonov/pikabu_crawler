@@ -41,10 +41,10 @@ GEM
     rack-protection (1.5.3)
       rack
     redis (3.2.2)
-    rest-client (1.8.0)
+    rest-client (2.0.0.rc2)
       http-cookie (>= 1.0.2, < 2.0)
       mime-types (>= 1.16, < 3.0)
-      netrc (~> 0.7)
+      netrc (~> 0.8)
     sidekiq (4.1.1)
       concurrent-ruby (~> 1.0)
       connection_pool (~> 2.2, >= 2.2.0)
@@ -70,7 +70,7 @@ DEPENDENCIES
   nori (~> 2.6)
   pry-byebug
   rack (~> 1.6)
-  rest-client (~> 1.8)
+  rest-client (~> 2.0.0.rc2)
   sidekiq (~> 4.1)
   sinatra (~> 1.4)
 

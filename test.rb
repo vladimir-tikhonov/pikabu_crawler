@@ -1,13 +1,17 @@
-require 'pp'
+require 'yaml'
+require 'rest-client'
 
-require_relative 'pikabu_api/comments'
-require_relative 'elastic/comments'
+proxies = YAML.load_file('proxies.yml')
 
-comments_api = PikabuAPI::Comments.new
-elastic_comments = Elastic::Comments.new
+proxies.each do |proxy|
+  begin
+    p RestClient::Request.execute(
+      method: :get,
+       url: "pikabu.ru/generate_xml_comm.php",
+       headers: { params: { id: 1 } },
+       proxy: proxy
+    ).to_s
+    puts 'ok'
 
-1.upto(10_000) do |index|
-  puts "Processing ##{index}"
-  comments = comments_api.fetch_comments(index)
-  elastic_comments.save_comments_bulk(comments)
+  end
 end

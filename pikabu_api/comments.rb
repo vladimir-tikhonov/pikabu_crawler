@@ -15,7 +15,13 @@ module PikabuAPI
 
     private def fetch_comments_xml(post_id)
       request_url = build_url('generate_xml_comm.php')
-      RestClient.get(request_url, headers: headers, params: { id: post_id })
+
+      RestClient::Request.execute(
+        method: :get,
+        url: request_url,
+        headers: { params: { id: post_id } },
+        proxy: proxy
+      ).to_s
     end
 
     private def build_comments(comment_xml, post_id)

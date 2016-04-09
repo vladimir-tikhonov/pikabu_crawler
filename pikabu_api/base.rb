@@ -1,4 +1,5 @@
 require 'uri'
+require 'yaml'
 
 module PikabuAPI
   class Base
@@ -12,6 +13,18 @@ module PikabuAPI
         'Host': 'pikabu.ru',
         'Origin': 'pikabu.ru'
       }
+    end
+
+    def proxy
+      proxies.sample
+    end
+
+    private def proxies
+      @proxies ||= if File.exist?('proxies.yml')
+        YAML.load_file('proxies.yml')
+      else
+        []
+      end
     end
   end
 end
