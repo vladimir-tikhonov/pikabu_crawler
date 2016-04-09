@@ -31,7 +31,9 @@ nginx:
   command: nginx
   ports:
     - "9200:9200"
+    - "3001:3001"
   links:
     - elastic
   volumes:
+    - ./frontend/dist:/opt/frontend
     - ./config/nginx.conf:/etc/nginx/nginx.conf:ro

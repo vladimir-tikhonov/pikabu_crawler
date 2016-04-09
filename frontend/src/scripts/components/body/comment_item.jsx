@@ -1,5 +1,6 @@
 const React = require('react');
 const moment = require('moment');
+require('moment/locale/ru');
 
 require('../../../styles/components/body/comment_item.scss');
 
