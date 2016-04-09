@@ -18,6 +18,11 @@ redis:
 elastic:
   build: docker/elastic
   command: elasticsearch -Des.network.host=0.0.0.0
+  privileged: true
+  ulimits:
+    memlock:
+      soft: -1
+      hard: -1
   volumes:
     - ./data/elastic:/usr/share/elasticsearch/data
     - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
