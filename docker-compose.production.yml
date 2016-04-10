@@ -1,0 +1,23 @@
+elastic:
+  build: docker/elastic
+  command: elasticsearch -Des.network.host=0.0.0.0
+  privileged: true
+  ulimits:
+    memlock:
+      soft: -1
+      hard: -1
+  volumes:
+    - ./data/elastic:/usr/share/elasticsearch/data
+    - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
+nginx:
+  image: nginx:stable
+  command: nginx
+  ports:
+    - "9200:9200"
+    - "80:3000"
+  links:
+    - elastic
+  volumes:
+    - ./frontend/dist:/opt/frontend
+    - ./config/nginx.production.conf:/etc/nginx/nginx.conf:ro
+    - ./data/nginx/cache:/usr/share/nginx/cache
