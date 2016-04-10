@@ -2,10 +2,14 @@ elastic:
   build: docker/elastic
   command: elasticsearch -Des.network.host=0.0.0.0
   privileged: true
+  env_file: config/elastic.env
   ulimits:
     memlock:
       soft: -1
       hard: -1
+    nofile:
+      soft: 262144
+      hard: 262144
   volumes:
     - ./data/elastic:/usr/share/elasticsearch/data
     - ./config/elasticsearch.yml:/usr/share/elasticsearch/config/elasticsearch.yml
