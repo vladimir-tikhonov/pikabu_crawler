@@ -1,0 +1,93 @@
+{
+    "most_commented_posts": {
+        "aggs": {
+            "by_post_id": {
+                "terms": {
+                    "field": "post_id",
+                    "size": 5
+                }
+            }
+        },
+        "size": 0
+    },
+
+    "most_popular_words": {
+        "aggs": {
+            "by_word": {
+                "terms": {
+                    "field": "content",
+                    "size": 5
+                }
+            }
+        },
+        "size": 0
+    },
+
+    "comments_per_year": {
+        "aggs": {
+            "comments_per_yeae": {
+                "date_histogram": {
+                    "field": "date",
+                    "interval": "year"
+                }
+            }
+        },
+        "size": 0
+    },
+
+    "active_users": {
+        "aggs": {
+            "by_user": {
+                "terms": {
+                    "field": "author",
+                    "size": 5
+                }
+            }
+        },
+        "size": 0
+    },
+
+    "sum_rating": {
+        "aggs": {
+            "by_user": {
+                "terms": {
+                    "field": "author",
+                    "size": 5,
+                    "order": {
+                        "by_rating": "desc"
+                    }
+                },
+                "aggs": {
+                    "by_rating": {
+                        "sum": {
+                            "field": "rating"
+                        }
+                    }
+                }
+            }
+        },
+        "size": 0
+    },
+
+    "sum_rating_in_post": {
+        "aggs": {
+            "by_post_id": {
+                "terms": {
+                    "field": "post_id",
+                    "size": 5,
+                    "order": {
+                        "by_rating": "desc"
+                    }
+                },
+                "aggs": {
+                    "by_rating": {
+                        "sum": {
+                            "field": "rating"
+                        }
+                    }
+                }
+            }
+        },
+        "size": 0
+    }
+}
